@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import { menuItems } from "./data/db.ts";
 import MenuItems from "./components/MenuItems.tsx";
+import useOrder from "./hooks/useOrder.ts";
 
 function App() {
+  const { addItem } = useOrder()
   return (
     <Fragment>
       <header className="bg-red-500 py-5 font-black text-white">
@@ -15,7 +17,7 @@ function App() {
           <h2 className="text-4xl font-black">Menú</h2>
           <div className="space-y-3 mt-10">
             {menuItems.map((item) => (
-              <MenuItems key={item.id} item={item} />
+              <MenuItems key={item.id} item={item} addItem={addItem} />
             ))}
           </div>
         </div>
