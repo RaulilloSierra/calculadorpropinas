@@ -7,7 +7,7 @@ import TotalOrder from "./components/TotalOrder.tsx";
 import TipPercentageForm from "./components/TipPercentageForm.tsx";
 
 function App() {
-  const { addItem, order, removeItem, tip, setTip } = useOrder();
+  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder();
   return (
     <Fragment>
       <header className="bg-yellow-800 py-5 font-black text-white">
@@ -25,9 +25,18 @@ function App() {
           </div>
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 mx-2">
-          <OrderContent order={order} removeItem={removeItem} />
-          <TipPercentageForm setTip={setTip} />
-          <TotalOrder order={order} tip={tip} />
+          {order.length > 0 ? (
+            <Fragment>
+              <OrderContent order={order} removeItem={removeItem} />
+              <TipPercentageForm setTip={setTip} tip={tip} />
+              <TotalOrder order={order} tip={tip} placeOrder={placeOrder} />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <h2 className="font-black text-4xl">Consumo</h2>
+              <p className="text-center">La orden está vacía</p>
+            </Fragment>
+          )}
         </div>
       </main>
     </Fragment>
