@@ -6,9 +6,10 @@ import { OrderItem } from "../types";
 type TotalOrderProps = {
   order: OrderItem[];
   tip: number;
+  placeOrder: () => void;
 };
 
-function TotalOrder({ order, tip }: TotalOrderProps) {
+function TotalOrder({ order, tip, placeOrder }: TotalOrderProps) {
   const subTotalAmount = useMemo(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
     [order]
@@ -32,7 +33,13 @@ function TotalOrder({ order, tip }: TotalOrderProps) {
           <span className="font-bold">{formatCurrency(totalAmount)}</span>
         </p>
       </div>
-      <button></button>
+      <button
+        className="w-full bg-black p-3 font-black uppercase text-white mt-10 hover:bg-gray-800 disabled:opacity-20 disabled:cursor-not-allowed"
+        disabled={totalAmount === 0}
+        onClick={placeOrder}
+      >
+        Guardar orden
+      </button>
     </Fragment>
   );
 }
