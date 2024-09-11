@@ -5,7 +5,7 @@ import useOrder from "./hooks/useOrder.ts";
 import OrderContent from "./components/OrderContent.tsx";
 
 function App() {
-  const { addItem, order } = useOrder();
+  const { addItem, order, removeItem } = useOrder();
   return (
     <Fragment>
       <header className="bg-yellow-800 py-5 font-black text-white">
@@ -23,7 +23,7 @@ function App() {
           </div>
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 mx-2">
-          <OrderContent order={order} />
+          <OrderContent order={order} removeItem={removeItem} />
         </div>
       </main>
     </Fragment>

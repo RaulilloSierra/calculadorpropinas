@@ -3,9 +3,10 @@ import { OrderItem } from "../types";
 
 type OrderContentProps = {
   order: OrderItem[];
+  removeItem: (id: OrderItem["id"]) => void;
 };
 
-export default function OrderContent({ order }: OrderContentProps) {
+export default function OrderContent({ order, removeItem }: OrderContentProps) {
   return (
     <div>
       <h2 className="font-black text-4xl">Consumo</h2>
@@ -27,7 +28,10 @@ export default function OrderContent({ order }: OrderContentProps) {
                   {formatCurrency(item.price * item.quantity)}
                 </p>
               </div>
-              <button className="bg-red-700 px-5 py-3 text-white font-black hover:bg-red-400 text-sm rounded-md">
+              <button
+                className="bg-red-700 px-5 py-3 text-white font-black hover:bg-red-400 text-sm rounded-md"
+                onClick={() => removeItem(item.id)}
+              >
                 Eliminar
               </button>
             </div>
