@@ -3,9 +3,11 @@ import { menuItems } from "./data/db.ts";
 import MenuItems from "./components/MenuItems.tsx";
 import useOrder from "./hooks/useOrder.ts";
 import OrderContent from "./components/OrderContent.tsx";
+import TotalOrder from "./components/TotalOrder.tsx";
+import TipPercentageForm from "./components/TipPercentageForm.tsx";
 
 function App() {
-  const { addItem, order, removeItem } = useOrder();
+  const { addItem, order, removeItem, tip, setTip } = useOrder();
   return (
     <Fragment>
       <header className="bg-yellow-800 py-5 font-black text-white">
@@ -24,6 +26,8 @@ function App() {
         </div>
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10 mx-2">
           <OrderContent order={order} removeItem={removeItem} />
+          <TipPercentageForm setTip={setTip} />
+          <TotalOrder order={order} tip={tip} />
         </div>
       </main>
     </Fragment>

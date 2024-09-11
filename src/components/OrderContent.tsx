@@ -6,7 +6,7 @@ type OrderContentProps = {
   removeItem: (id: OrderItem["id"]) => void;
 };
 
-export default function OrderContent({ order, removeItem }: OrderContentProps) {
+function OrderContent({ order, removeItem }: OrderContentProps) {
   return (
     <div>
       <h2 className="font-black text-4xl">Consumo</h2>
@@ -41,3 +41,5 @@ export default function OrderContent({ order, removeItem }: OrderContentProps) {
     </div>
   );
 }
+
+export default OrderContent;
