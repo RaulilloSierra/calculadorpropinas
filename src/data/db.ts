@@ -43,8 +43,8 @@ export const menuItems: MenuItems[] = [
   },
   {
     id: 9,
-    name: "Tequila",
-    price: 100000,
+    name: "Aguardiente Nectar x1500 ml",
+    price: 66400,
   },
   {
     id: 10,
