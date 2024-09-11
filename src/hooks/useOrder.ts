@@ -19,5 +19,5 @@ export default function useOrder() {
     }
   };
 
-  return { addItem };
+  return { addItem, order };
 }
