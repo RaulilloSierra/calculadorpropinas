@@ -1,12 +1,13 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch } from "react";
 import { tipOptions } from "../data/tipOptions.ts";
+import { OrderActions } from "../reducers/orderReducer.ts";
 
 type TipPercentageFormProps = {
-  setTip: Dispatch<SetStateAction<number>>;
+  dispatch: Dispatch<OrderActions>;
   tip: number;
 };
 
-function TipPercentageForm({ setTip, tip }: TipPercentageFormProps) {
+function TipPercentageForm({ dispatch, tip }: TipPercentageFormProps) {
   return (
     <div>
       <h3 className="font-black text-2xl">Propina: </h3>
@@ -18,7 +19,12 @@ function TipPercentageForm({ setTip, tip }: TipPercentageFormProps) {
               type="radio"
               name="tip"
               value={t.value}
-              onChange={(e) => setTip(+e.target.value)}
+              onChange={(e) =>
+                dispatch({
+                  type: "addTip",
+                  payload: { value: +e.target.value },
+                })
+              }
               checked={t.value === tip}
             />
             <label htmlFor={t.id}>{t.label}</label>
