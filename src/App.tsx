@@ -29,7 +29,11 @@ function App() {
             <Fragment>
               <OrderContent order={state.order} dispatch={dispatch} />
               <TipPercentageForm dispatch={dispatch} tip={state.tip} />
-              <TotalOrder order={state.order} tip={state.tip} dispatch={dispatch} />
+              <TotalOrder
+                order={state.order}
+                tip={state.tip}
+                dispatch={dispatch}
+              />
             </Fragment>
           ) : (
             <Fragment>
